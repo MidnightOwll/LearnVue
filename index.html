@@ -5,36 +5,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Vue</title>
 	<link rel="stylesheet" href="style.css">
-
+	<style>
+		[v-cloak] {
+			display: none;
+		}
+	</style>
 </head>
 	<body>
-
-		<div class="container" id="app2">
-			<div class="card">
-				<h1>{{ title }}</h1>
-
-				<div class="form-control">
-					<input
-					 	type="text" 
-					 	v-bind:placeholder="placeholderString" 
-					 	v-bind:value="inputValue"
-					 	v-on:input="inputChangeHandler"
-					 	v-on:keypress.enter="addNewNote"
-					 />
-				</div>
-				<!-- <h2>inputValue: {{ inputValue }}</h2> -->
-				<button class="btn" v-on:click="addNewNote">Add</button>	
-				<hr/>
-				<ul class="list">
-					<li class="list-item" v-for="myNote in notes">
-						{{ myNote }}
-					</li>
-				</ul>			
+		<div class="container pt-5" id="app" v-cloak>
+			<div class="card center">
+				<div v-html="html"></div>
+				<!-- <h1>{{ title }}</h1> -->
+				<h2 v-text="title"></h2>
+				<h2 v-once>{{ title }}</h2>
+				<h2 v-pre>{{ title }}</h2>
+				<button class="btn" @click="title = 'Another value'">Rename</button>
 			</div>
 		</div>
-		
-
 		<script src="https://unpkg.com/vue@next"></script>
-		<script src="app.js"></script>
+		<script src="app2.js"></script>
 	</body>
 </html>
